@@ -1,0 +1,21 @@
+---
+import PageLayout from '@/layouts/layout.astro'
+import { areasServiciosMeta } from '@/config/meta'
+import { HeroSection } from '@/components'
+import { PracticeAreasMain } from '@/features'
+---
+
+<PageLayout
+  title={areasServiciosMeta.title}
+  description={areasServiciosMeta.description}
+  image={areasServiciosMeta.image}
+  canonical={areasServiciosMeta.canonical}
+>
+  <HeroSection
+    title="Áreas de práctica"
+    description="Descubre nuestros servicios por especialidad y encuentra la solución legal que necesitas."
+    backgroundImage="https://img.freepik.com/fotos-premium/mujer-negocios-estrechando-mano-abogado-despues-discutir-buen-trato-oficina_1077198-313.jpg"
+  />
+
+  <PracticeAreasMain client:load />
+</PageLayout>

@@ -1,0 +1,65 @@
+---
+import PageLayout from '@/layouts/layout.astro'
+import { getBlogPostBySlug } from '@/features'
+import { extractAllTags } from '@/features'
+import { User, Calendar } from 'lucide-react'
+
+const { slug } = Astro.params
+
+if (!slug) {
+  return Astro.redirect('/404')
+}
+
+const post = await getBlogPostBySlug(slug)
+
+if (!post) {
+  return Astro.redirect('/404')
+}
+
+const allDisplayTags = extractAllTags(post)
+
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+---
+
+<PageLayout title={post.title} description={post.excerpt} image={post.image?.url}>
+  <main class="bg-white py-12 lg:py-16">
+    <article class="prose prose-lg mx-auto max-w-4xl px-4">
+      {post.image?.url && <img src={post.image.url} alt={post.image.alt} class="mb-8 w-full" />}
+
+      <h1 class="font-heading text-primary text-4xl font-bold">{post.title}</h1>
+
+      <div class="text-neutral mb-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-base">
+        <div class="flex items-center gap-2">
+          <User client:visible className="h-4 w-4" />
+          <span>{post.author.nombre}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <Calendar client:visible className="h-4 w-4" />
+          <span>{formatDate(post.publishedDate)}</span>
+        </div>
+      </div>
+
+      {
+        allDisplayTags.length > 0 && (
+          <div class="mb-8 flex flex-wrap gap-2">
+            {allDisplayTags.map((tagName) => (
+              <span class="bg-primary/10 text-primary rounded-full px-3 py-1 text-sm font-medium">
+                {tagName}
+              </span>
+            ))}
+          </div>
+        )
+      }
+
+      <hr class="mb-8" />
+
+      <div class="prose prose-lg max-w-none" set:html={post.contentHtml} />
+    </article>
+  </main>
+</PageLayout>

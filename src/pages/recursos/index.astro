@@ -1,0 +1,21 @@
+---
+import PageLayout from '@/layouts/layout.astro'
+import { recursosMeta } from '@/config/meta/recursos'
+import { HeroSection } from '@/components'
+import { ResourcesPageContent } from '@/features'
+---
+
+<PageLayout
+  title={recursosMeta.title}
+  description={recursosMeta.description}
+  image={recursosMeta.image}
+  canonical={recursosMeta.canonical}
+>
+  <HeroSection
+    title="Recursos Legales"
+    description="Documentos, formularios, guías y casos de estudio para apoyar tus necesidades legales"
+    backgroundImage="https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  />
+
+  <ResourcesPageContent client:load />
+</PageLayout>

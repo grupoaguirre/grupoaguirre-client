@@ -1,0 +1,14 @@
+---
+import PageLayout from '@/layouts/layout.astro'
+import { contactMeta } from '@/config/meta/contacto'
+import { HeroContact } from '@/features'
+---
+
+<PageLayout
+  title={contactMeta.title}
+  description={contactMeta.description}
+  image={contactMeta.image}
+  canonical={contactMeta.canonical}
+>
+  <HeroContact />
+</PageLayout>

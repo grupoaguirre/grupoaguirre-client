@@ -1,0 +1,63 @@
+---
+import PageLayout from '@/layouts/layout.astro'
+import { SpecialtyHero, SpecialtyContent, SpecialtyCTA } from '@/features'
+import { getSpecialtyBySlug } from '@/features/practice-areas/data'
+
+export async function getStaticPaths() {
+  const specialties = [
+    'laboral',
+    'comercial',
+    'societario',
+    'administrativo',
+    'regulatorio',
+    'propiedad-intelectual',
+    'tributario',
+    'financiero',
+    'contractual',
+    'cumplimiento-normativo',
+    'inmobiliario',
+    'minero',
+    'patrimonial',
+    'sucesiones',
+    'propiedades',
+    'familia',
+  ]
+
+  return specialties.map((slug) => ({
+    params: { slug },
+  }))
+}
+
+const { slug } = Astro.params
+const specialty = getSpecialtyBySlug(slug!)
+
+if (!specialty) {
+  return Astro.redirect('/404')
+}
+
+const meta = {
+  title: `${specialty.title} - Aguirre & Asociados`,
+  description: specialty.subtitle,
+  image:
+    'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  canonical: `https://aguirre-web-site.vercel.app/areas/${slug}`,
+}
+---
+
+<PageLayout
+  title={meta.title}
+  description={meta.description}
+  image={meta.image}
+  canonical={meta.canonical}
+>
+  <SpecialtyHero client:load title={specialty.title} subtitle={specialty.subtitle} />
+
+  <SpecialtyContent
+    client:load
+    description={specialty.description}
+    services={specialty.services}
+    currentSlug={slug}
+  />
+
+  <SpecialtyCTA client:load specialtyName={specialty.title} />
+</PageLayout>

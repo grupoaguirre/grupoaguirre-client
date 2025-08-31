@@ -1,0 +1,21 @@
+---
+import PageLayout from '@/layouts/layout.astro'
+import { blogMeta } from '@/config/meta/blog'
+import { HeroSection } from '@/components'
+import { BlogPageContent } from '@/features'
+---
+
+<PageLayout
+  title={blogMeta.title}
+  description={blogMeta.description}
+  image={blogMeta.image}
+  canonical={blogMeta.canonical}
+>
+  <HeroSection
+    title="Blog Legal"
+    description="Artículos informativos sobre derecho, casos de estudio y actualizaciones legales"
+    backgroundImage="https://images.unsplash.com/photo-15056641_de_tu_preferencia.jpg"
+  />
+
+  <BlogPageContent client:load />
+</PageLayout>
