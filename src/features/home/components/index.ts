@@ -1,0 +1,5 @@
+export { default as HeroSection } from './hero-section/index.astro'
+export { default as AboutSection } from './about-section/index.astro'
+export { default as ServicesSection } from './services-section/index.astro'
+export { default as FeaturesSection } from './features-section/index.astro'
+export { default as MembersSection } from './members-section/index.astro'

@@ -1,0 +1,66 @@
+---
+import { ROUTES } from '@/config/routes'
+---
+
+<section
+  class="relative mt-0 bg-cover bg-center bg-no-repeat py-32 lg:py-48"
+  style="background-image: url('/images/home/hero.png');"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="text-neutral mb-6 text-sm font-medium uppercase tracking-wider">
+        ASEGURANDO TU FUTURO
+      </p>
+      <h1
+        class="font-heading text-primary mb-6 text-4xl font-bold uppercase leading-tight md:text-5xl lg:text-6xl"
+      >
+        Soluciones legales
+        <br />
+        en las que puedes confiar
+      </h1>
+      <p class="text-neutral mx-auto mb-10 max-w-2xl text-lg leading-relaxed">
+        Nuestras soluciones legales están diseñadas para brindar apoyo confiable y comprensivo en
+        cada etapa de tus procesos legales y transacciones.
+      </p>
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          href={ROUTES.practiceAreas}
+          class="bg-primary focus:ring-primary inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white transition-colors hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        >
+          Ver áreas
+        </a>
+        <a
+          href={ROUTES.contact}
+          class="border-neutral text-primary hover:bg-neutral/10 focus:ring-neutral inline-flex items-center justify-center border bg-transparent px-8 py-3 text-base font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+        >
+          Contactar
+        </a>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-20 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+      <div
+        class="relative overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl"
+      >
+        <img
+          src="/images/home/1.jpg"
+          alt="Estatua de la Dama de la Justicia representando excelencia legal"
+          class="h-96 w-full object-cover transition-transform duration-300 hover:scale-105 md:h-96"
+          loading="lazy"
+        />
+        <div class="from-primary/20 absolute inset-0 bg-gradient-to-t to-transparent"></div>
+      </div>
+      <div
+        class="relative overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl"
+      >
+        <img
+          src="/images/home/2.webp"
+          alt="Balanza de la justicia representando equilibrio y equidad legal"
+          class="h-96 w-full object-cover transition-transform duration-300 hover:scale-105 md:h-96"
+          loading="lazy"
+        />
+        <div class="from-secondary/20 absolute inset-0 bg-gradient-to-t to-transparent"></div>
+      </div>
+    </div>
+  </div>
+</section>

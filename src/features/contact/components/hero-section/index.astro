@@ -1,0 +1,49 @@
+---
+import { Phone, Mail, Clock } from 'lucide-react'
+---
+
+<section
+  class="from-primary via-primary-dark to-primary relative min-h-[70vh] overflow-hidden bg-gradient-to-br pb-20 pt-32"
+>
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <img
+      src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+      alt="Contacto"
+      class="h-full w-full object-cover"
+    />
+  </div>
+
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="hero-content max-w-3xl">
+      <h1
+        class="font-heading mb-6 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
+      >
+        Contáctanos
+      </h1>
+      <p class="mb-8 text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl">
+        Estamos aquí para ayudarte. Agenda una consulta con nuestros especialistas
+      </p>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="contact-card rounded-xl bg-white/10 p-6 backdrop-blur-sm">
+          <Phone className="mb-4 h-8 w-8 text-white" />
+          <h3 class="font-heading mb-2 text-lg font-semibold text-white">Llámanos</h3>
+          <p class="text-white/80">+51 955 000 125</p>
+        </div>
+
+        <div class="contact-card rounded-xl bg-white/10 p-6 backdrop-blur-sm">
+          <Mail className="mb-4 h-8 w-8 text-white" />
+          <h3 class="font-heading mb-2 text-lg font-semibold text-white">Escríbenos</h3>
+          <p class="text-white/80">atencionalcliente@xpertice.pe</p>
+        </div>
+
+        <div class="contact-card rounded-xl bg-white/10 p-6 backdrop-blur-sm">
+          <Clock className="mb-4 h-8 w-8 text-white" />
+          <h3 class="font-heading mb-2 text-lg font-semibold text-white">Horario</h3>
+          <p class="text-white/80">Lun - Vie: 9:00 - 18:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
