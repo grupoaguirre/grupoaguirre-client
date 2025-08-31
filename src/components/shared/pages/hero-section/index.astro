@@ -1,0 +1,60 @@
+---
+import type { HeroSectionProps } from './types'
+
+const {
+  title = 'Excelencia Legal con Propósito',
+  description = 'Somos un equipo de profesionales comprometidos con la justicia y la excelencia, brindando soluciones legales efectivas desde 2010.',
+  backgroundImage = 'https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
+  primaryButton,
+  secondaryButton,
+} = Astro.props as HeroSectionProps
+---
+
+<section
+  class="from-primary to-primary-dark relative flex min-h-[70vh] items-center overflow-hidden bg-gradient-to-r"
+>
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <img
+      src={backgroundImage}
+      alt="Imagen de fondo"
+      class="h-full w-full object-cover"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="relative z-10 max-w-3xl text-left text-white">
+      <h1
+        class="font-heading mb-6 text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl"
+      >
+        {title}
+      </h1>
+      <p class="mb-8 text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl">
+        {description}
+      </p>
+      {
+        (primaryButton || secondaryButton) && (
+          <div class="flex flex-wrap gap-4">
+            {primaryButton && (
+              <a
+                href={primaryButton.href}
+                class="text-primary bg-white px-6 py-3 font-medium transition-colors hover:opacity-80"
+              >
+                {primaryButton.text}
+              </a>
+            )}
+            {secondaryButton && (
+              <a
+                href={secondaryButton.href}
+                class="bg-white/10 px-6 py-3 font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                {secondaryButton.text}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

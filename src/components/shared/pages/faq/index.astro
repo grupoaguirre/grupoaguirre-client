@@ -1,0 +1,109 @@
+---
+const faqs = [
+  {
+    id: 1,
+    question: '¿Qué servicios legales ofrecen?',
+    answer:
+      'Ofrecemos servicios integrales de asesoría legal incluyendo derecho corporativo, cumplimiento normativo, contratos comerciales, resolución de conflictos y asesoría en inversiones. Nuestro equipo especializado brinda soluciones personalizadas para cada caso.',
+  },
+  {
+    id: 2,
+    question: '¿Cómo funciona la consulta inicial?',
+    answer:
+      'La consulta inicial es gratuita y nos permite entender tu situación legal. Durante esta sesión evaluamos tu caso, explicamos las opciones disponibles y establecemos un plan de acción personalizado para resolver tu situación.',
+  },
+  {
+    id: 3,
+    question: '¿Cuánto tiempo toma resolver un caso legal?',
+    answer:
+      'El tiempo varía según la complejidad del caso. Casos simples pueden resolverse en semanas, mientras que casos complejos pueden tomar meses. Te mantenemos informado del progreso en cada etapa del proceso.',
+  },
+  {
+    id: 4,
+    question: '¿Ofrecen servicios de cumplimiento normativo?',
+    answer:
+      'Sí, especializamos en cumplimiento normativo para empresas. Ayudamos a identificar riesgos legales, implementar políticas de cumplimiento y mantener tu empresa al día con las regulaciones vigentes.',
+  },
+]
+---
+
+<section class="bg-white py-16 lg:py-24">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="mb-12 text-center">
+      <div class="bg-primary mb-6 inline-flex items-center px-4 py-2">
+        <span class="text-sm font-medium uppercase tracking-wide text-white">
+          RESPUESTAS A TUS PREGUNTAS
+        </span>
+      </div>
+      <h2
+        class="font-heading text-primary mb-4 text-2xl font-bold leading-tight md:text-3xl lg:text-4xl"
+      >
+        Preguntas frecuentes
+      </h2>
+      <p class="text-neutral mx-auto max-w-2xl text-base leading-relaxed">
+        Encuentra respuestas a las preguntas más comunes sobre nuestros servicios legales y
+        procedimientos.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {
+        faqs.map((faq) => (
+          <div class="border-neutral/20 overflow-hidden border bg-white shadow-sm">
+            <button
+              class="faq-toggle hover:bg-neutral/5 flex w-full items-center justify-between p-6 text-left transition-colors"
+              type="button"
+              data-id={faq.id}
+            >
+              <div class="flex items-center gap-4">
+                <div class="bg-primary flex h-8 w-8 items-center justify-center text-sm font-medium text-white">
+                  {faq.id}
+                </div>
+                <h3 class="font-heading text-primary text-lg font-bold leading-tight">
+                  {faq.question}
+                </h3>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="text-neutral h-5 w-5 transform transition-transform duration-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer hidden px-6 pb-6">
+              <div class="text-neutral ml-12 leading-relaxed">{faq.answer}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script type="module">
+  const toggles = document.querySelectorAll('.faq-toggle')
+  toggles.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const parent = btn.parentElement
+      const answer = parent.querySelector('.faq-answer')
+      const icon = btn.querySelector('svg')
+      const isOpen = !answer.classList.contains('hidden')
+
+      document.querySelectorAll('.faq-answer').forEach((a) => a.classList.add('hidden'))
+      document.querySelectorAll('.faq-toggle svg').forEach((i) => i.classList.remove('rotate-180'))
+
+      if (!isOpen) {
+        answer.classList.remove('hidden')
+        icon.classList.add('rotate-180')
+      }
+    })
+  })
+</script>
